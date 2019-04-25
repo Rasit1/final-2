@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Health medical template project">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- css -->
+  <link rel="stylesheet" type="text/css" href="/css/acceuil.css">
+<!-- css -->
+
+
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+  <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+  <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="styles/bootstrap4/popper.js"></script>
+  <script src="styles/bootstrap4/bootstrap.min.js"></script>
+  <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+  <script src="plugins/easing/easing.js"></script>
+  <script src="plugins/parallax-js-master/parallax.min.js"></script>
+  <script src="js/custom.js"></script>
+
+
+</head>
+<body style="background-color: #009688;">
+
+    <!-- Header -->
+
+    <header class="header" id="header">
+      <div>
+        <div class="header_top">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="header_top_content d-flex flex-row align-items-center justify-content-start">
+
+                  <div class="logo">
+                    <a href="/"><span>PharmaSite</span></a>
+                    <i class='fas fa-clinic-medical' style='font-size:48px;color:#1abc9c'></i>
+                  </div>
+
+                  <div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
+
+                    <div class="header_top_nav">
+
+                      <ul class="d-flex flex-row align-items-center justify-content-start">
+
+                        <li class="nav-item">
+
+                          <% unless current_user %>
+                              <li><a href="/user/new">S'enregistrer</a></li>
+                              <li><a href="/session/new">Se connecter</a></li>
+                              <li><a href="/admin/new">Admin</a></li>
+                         <% else %>
+                             <p id="id">User: <span id="user"><%= current_user.nom %></span></p>
+                            <li><a href="/session/<%= current_user.id %>" data-method="delete" >Sortir</a></li>
+                            <li><a href="/admin/new">Admin</a></li>
+                        <% end %>
+
+
+                       </li>
+
+                      </ul>
+
+                    </div>
+
+                    <div class="header_top_phone">
+                      <i class="fa fa-phone" aria-hidden="true"></i>
+                      <span>+261 34 48 458 68</span>
+                    </div>
+
+                  </div>
+
+                  <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="header_nav" id="header_nav_pin">
+          <div class="header_nav_inner">
+            <div class="header_nav_container">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
+                      <nav class="main_nav">
+                        <ul class="d-flex flex-row align-items-center justify-content-start">
+                          <li class="active"><a href="/">Acceuil</a></li>
+                          <li><a href="about.html">Produits</a></li>
+                          <li><a href="/garde">Garde</a></li>
+                          <li><a href="services.html">Services</a></li>
+
+                          <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                      </nav>
+                    <!--   <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
+                        <form action="#" id="search_container_form" class="search_container_form">
+                          <input type="text" class="search_container_input" placeholder="Search" required="required">
+                          <button class="search_container_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                      </div> -->
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+<div class="container-fluid" >
+  <div style="margin-top: 200px; width: 100% ; height: 500px;" class="row">
+    <div class="col-md-12" >
+      <div id="map"></div>
+          <script>
+
+            // First, create an object containing LatLng and population for each city.
+      var citymap = {
+        chicago: {
+          center: {lat: -18.9163253,lng: 47.5370694},
+          population: 56
+        },
+      };
+
+
+      function initMap() {
+
+  var ambanidia = {
+    info:
+      '<h4>Pharmacie Hanitra Ambanidia</h4>'+
+      '<p>Tel : 032 92 907 99<br> Mail : hanitra@hanitra.com</p>'+
+      '<p>Medicament : Paracetamol<p>'+
+      '<p>Stock : Disponible<p>'+
+      '<button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Commander</button>',
+
+   lat: -18.9163253,
+    long: 47.5370694,
+  }
+
+  var ambohibao = {
+    info:
+      '<h4>Pharmacie Ambihibao</h4>'+
+      '<p>Tel : 032 92 907 99<br> Mail : ambohibao@ambohibao.com</p>'+
+      '<p>Medicament : Paracetamol<p>'+
+      '<p>Stock : Disponible<p>'+
+      '<a href="#">Commander</a>',
+
+    lat: -18.8456215,
+    long: 47.4717575,
+  }
+
+  var analakely = {
+    info:
+      '<h4>Pharmacie Razafimandranto</h4>'+
+      '<p>Tel : 033 33 333 33<br> Mail : analakely@analakely.com</p>'+
+      '<p>Stock : Epuiser<p>',
+    lat: -18.9085045,
+    long: 47.5235814,
+  }
+
+
+  var mahamasina = {
+    info:
+      '<h4>Pharmacie Mahamasina</h4>'+
+      '<p>Tel : 033 33 333 33<br> Mail : mahamasina@mahamasina.com</p>'+
+      '<p>Stock : Disponible<p>'+
+      '<a href="#">Commander</a>',
+
+    lat: -18.9171187,
+    long: 47.521189,
+  }
+
+
+  var pergola = {
+    info:
+      '<h4>Pharmacie Pergola Antaninarenina</h4>'+
+      '<p>Tel : 032 92 907 99<br> Mail : pergola@pergola.com</p>'+
+      '<p>Stock : Epuiser<p>',
+
+    lat: -18.9202869,
+    long: 47.5219782,
+  }
+
+  var locations = [
+    [ambanidia.info, ambanidia.lat, ambanidia.long, 0],
+    [ambohibao.info, ambohibao.lat, ambohibao.long, 1],
+    [analakely.info, analakely.lat, analakely.long, 2],
+    [mahamasina.info, mahamasina.lat, mahamasina.long, 3],
+    [pergola.info, pergola.lat, pergola.long, 4],
+  ]
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: new google.maps.LatLng(-18.9001128, 47.5465831),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+  })
+
+  var infowindow = new google.maps.InfoWindow({})
+
+  var marker, i
+
+  for (i = 0; i < locations.length; i++) {
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+      map: map,
+    })
+
+    google.maps.event.addListener(
+      marker,
+      'click',
+      (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0])
+          infowindow.open(map, marker)
+        }
+      })(marker, i)
+    )
+  }
+
+
+
+
+
+  // Construct the circle for each value in citymap.
+        // Note: We scale the area of the circle based on the population.
+        for (var city in citymap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: citymap[city].center,
+            radius: Math.sqrt(citymap[city].population) * 100
+          });
+        }
+}
+
+
+
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR8u956C8lSxTvK3ly5l9XDVpTUdKtWTM&callback=initMap"
+          async defer></script>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div style="background: #d35400;" class="modal-header">
+          <p style="color: black;" >Médicament : Paracétamol</p>
+        </div>
+        <div class="modal-body">
+
+          <p style="font-size: 20px; color: black; font-weight: bold;"><span style="font-size: 20px; color: black; font-weight: bold; margin-right: 20px;">Prix :</span> 7.500fmg/boite</p><br><br>
+
+          <div style="text-align: center;" class="radio">
+              <label style="color: black;"  ><input id="btn2" type="radio" name="optradio" checked>Récuperer</label>
+          </div>
+          <div style="text-align: center;" class="radio">
+            <label style="color: black;" ><input id="btn" type="radio" name="optradio">Livraison à domicile</label>
+          </div>
+
+          <div class="form-group" style="display: none;" id="info" >
+            <label>Nom</label>
+            <input  class="form-control col-sm-12" type="text" name="">
+
+            <label>Téléphone</label>
+            <input class="form-control col-sm-12" type="text" name="">
+
+            <label>Lieu de récupération</label>
+            <input class="form-control col-sm-12" type="text" name="">
+          </div>
+
+        </div>
+        <div  class="modal-footer justify-content-center align-items-center">
+          <a class="btn btn-primary" href="/livraison">Payer</a>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+  $(document).ready(function(){
+      $("#btn").click(function(){
+        $("#info").show();
+      });
+
+      $("#btn2").click(function(){
+        $("#info").hide();
+      });
+});
+</script>
+
+
+
+
+
+
+
+
+
+      <!-- Footer -->
+<footer style="background-color: #2c3e50; margin-top: 50px;" class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">PharmaSite</h5>
+          <p>Disponible 24h/7j</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> PharmaSite.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+</body>
+</html>

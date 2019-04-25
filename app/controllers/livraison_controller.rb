@@ -1,0 +1,2 @@
+class LivraisonController < ApplicationController
+end

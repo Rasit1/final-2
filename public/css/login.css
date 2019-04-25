@@ -1,0 +1,8 @@
+.bgimg {
+	background-image: url(/image2/j.jpg);
+	background-repeat: no-repeat;
+	height: auto;
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}

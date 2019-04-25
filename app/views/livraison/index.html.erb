@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Health medical template project">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- css -->
+  <link rel="stylesheet" type="text/css" href="/css/acceuil.css">
+<!-- css -->
+
+
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+  <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+  <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="styles/bootstrap4/popper.js"></script>
+  <script src="styles/bootstrap4/bootstrap.min.js"></script>
+  <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+  <script src="plugins/easing/easing.js"></script>
+  <script src="plugins/parallax-js-master/parallax.min.js"></script>
+  <script src="js/custom.js"></script>
+
+
+</head>
+<body>
+
+    <!-- Header -->
+
+    <header class="header" id="header">
+      <div>
+        <div class="header_top">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="header_top_content d-flex flex-row align-items-center justify-content-start">
+
+                  <div class="logo">
+                    <a href="/"><span>PharmaSite</span></a>
+                    <i class='fas fa-clinic-medical' style='font-size:48px;color:#1abc9c'></i>
+                  </div>
+
+                  <div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
+
+                    <div class="header_top_nav">
+
+                      <ul class="d-flex flex-row align-items-center justify-content-start">
+
+                        <li class="nav-item">
+
+                          <% unless current_user %>
+                              <li><a href="/user/new">S'enregistrer</a></li>
+                              <li><a href="/session/new">Se connecter</a></li>
+                              <li><a href="/admin/new">Admin</a></li>
+                         <% else %>
+                             <p id="id">User: <span id="user"><%= current_user.nom %></span></p>
+                            <li><a href="/session/<%= current_user.id %>" data-method="delete" >Sortir</a></li>
+                            <li><a href="/admin/new">Admin</a></li>
+                        <% end %>
+
+
+                       </li>
+
+                      </ul>
+
+                    </div>
+
+                    <div class="header_top_phone">
+                      <i class="fa fa-phone" aria-hidden="true"></i>
+                      <span>+261 34 48 458 68</span>
+                    </div>
+
+                  </div>
+
+                  <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="header_nav" id="header_nav_pin">
+          <div class="header_nav_inner">
+            <div class="header_nav_container">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
+                      <nav class="main_nav">
+                        <ul class="d-flex flex-row align-items-center justify-content-start">
+                          <li class="active"><a href="/">Acceuil</a></li>
+                          <li><a href="about.html">Produits</a></li>
+                          <li><a href="/garde">Garde</a></li>
+                          <li><a href="services.html">Services</a></li>
+
+                          <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                      </nav>
+                    <!--   <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
+                        <form action="#" id="search_container_form" class="search_container_form">
+                          <input type="text" class="search_container_input" placeholder="Search" required="required">
+                          <button class="search_container_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                      </div> -->
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+
+
+<div style="margin-top: 300px;" class="container" >
+  <div >
+    <h1 style="color: #16a085;" >Achat effectué</h1><br>
+    <h3 style="font-weight: bold;" >Médicament : Paracétamol</span> </h3><br>
+    <h3 style="font-weight: bold;">Au nom de : Rah jean</h3><br>
+    <h3 style="font-weight: bold;">Prix : 7.500fmg + 20.000fmg le frais de livraison</h3><br>
+    <h3 style="font-weight: bold;">Lieux de récuperation : Rond point Ambanidia</h3><br>
+    <h3 style="font-weight: bold;">Merci d'avoir choisi notre service, à bientôt!</h3>
+  </div>
+</div>
+
+
+
+     <!-- Footer -->
+<footer style="background-color: #2c3e50; margin-top: 150px;" class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">PharmaSite</h5>
+          <p>Disponible 24h/7j</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> PharmaSite.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+module GardeHelper
+end

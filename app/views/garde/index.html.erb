@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Health medical template project">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+  <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+  <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="styles/bootstrap4/popper.js"></script>
+  <script src="styles/bootstrap4/bootstrap.min.js"></script>
+  <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+  <script src="plugins/easing/easing.js"></script>
+  <script src="plugins/parallax-js-master/parallax.min.js"></script>
+  <script src="js/custom.js"></script>
+
+  <style type="text/css">
+
+    body {
+      background-color: white;
+      }
+
+    th, td{
+      color: black;
+    }
+
+  </style>
+
+
+</head>
+    <body>
+
+      <div class="super_container">
+
+      <!-- Menu -->
+
+      <div class="menu trans_500">
+        <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+          <div class="menu_close_container"><div class="menu_close"></div></div>
+          <form action="#" class="menu_search_form">
+            <input type="text" class="menu_search_input" placeholder="Search" required="required">
+            <button class="menu_search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </form>
+          <ul>
+            <li class="menu_item"><a href="/">Acceuil</a></li>
+            <li class="menu_item"><a href="/produit">Produits</a></li>
+            <li class="menu_item"><a href="/garde">Garde</a></li>
+            <li class="menu_item"><a href="#">Services</a></li>
+            <li class="menu_item"><a href="/team">Team</a></li>
+          </ul>
+        </div>
+        <div class="menu_social">
+          <ul>
+            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- Header -->
+        <header class="header" id="header">
+          <div>
+            <div class="header_top">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="header_top_content d-flex flex-row align-items-center justify-content-start">
+
+                      <div class="logo">
+                        <a href="/"><span>PharmaSite</span></a>
+                        <i class='fas fa-clinic-medical' style='font-size:48px;color:#1abc9c'></i>
+                      </div>
+
+                      <div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
+
+                        <div class="header_top_nav">
+
+                          <ul class="d-flex flex-row align-items-center justify-content-start">
+
+                            <li class="nav-item">
+
+                              <% unless current_user %>
+                                  <li><a href="/user/new">S'enregistrer</a></li>
+                                  <li><a href="/session/new">Se connecter</a></li>
+                                  <li><a href="/admin/new">Côté Admin</a></li>
+                             <% else %>
+                                 <p id="id">User: <span id="user"><%= current_user.nom %></span></p>
+                                <li><a href="/session/<%= current_user.id %>" data-method="delete" >Sortir</a></li>
+                                <li><a href="/admin/new">Admin</a></li>
+                            <% end %>
+
+                          </ul>
+
+                        </div>
+
+                        <div class="header_top_phone">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          <span>+261 34 48 458 68</span>
+                        </div>
+
+                      </div>
+
+                      <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="header_nav" id="header_nav_pin">
+              <div class="header_nav_inner">
+                <div class="header_nav_container">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
+                          <nav class="main_nav">
+                            <ul class="d-flex flex-row align-items-center justify-content-start">
+                                <li class="menu_item"><a href="/">Acceuil</a></li>
+                                <li class="menu_item"><a href="/produit/index">Produits</a></li>
+                                <li class="menu_item"><a href="/garde">Garde</a></li>
+                                <li class="menu_item"><a href="#">Services</a></li>
+                                <li class="menu_item"><a href="/team">Team</a></li>
+                            </ul>
+                          </nav>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div style="margin-top:12%" class="container" >
+          <div class="text-center">
+            <h2 style="font-size:2em;margin-bottom:2%">PHARMACIE DE GARDE</h2>
+          </div>
+          <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">PHARMACIE</th>
+              <th scope="col">ADRESSE</th>
+              <th scope="col">TÉLÉPHONE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>RASOLONJATOVO</td>
+              <td>En face HJRA</td>
+              <td>020 24 570 38</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>ANDOHATAPENAKA</td>
+              <td>Route FDC près station Galana</td>
+              <td>020 22 670 70</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>SOARY</td>
+              <td>Iadiambola Ampasapito</td>
+              <td>020 22 410 58</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>MAHAFALY</td>
+              <td>Près terminus 165 Mahatony Ivandry</td>
+              <td>034 10 937 49</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>PROVIDENCE</td>
+              <td>Andohan'Analakely</td>
+              <td>020 22 547 49</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>RALISON</td>
+              <td>Antanimena</td>
+              <td>020 22 226 14</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <!-- Footer -->
+<footer style="background-color: #2c3e50;  margin-bottom: -500px;" class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div style="padding-top: 70px;" class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">PharmaSite</h5>
+          <p>Consultable 24h/7j</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> PharmaSite.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+
+
+  </body>
+</html>
